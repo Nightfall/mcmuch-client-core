@@ -1,9 +1,8 @@
 package minesharelib;
 
-import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.type.TypeReference;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Content extends Data {
@@ -11,15 +10,15 @@ public class Content extends Data {
 	public final String sha1;
 
 	public static List<Content> all() throws IOException {
-		List<Content> contents = new ArrayList<Content>();
-		for (JsonNode node : Data.allWith("content")) {
-			contents.add(fromJson(node));
-		}
-		return contents;
+		return API.mapper.readValue(Data.allWith("content").asText(), new TypeReference<List<Content>>() {});
 	}
 
-	protected static Content fromJson(JsonNode json) throws IOException {
-		return API.mapper.readValue(json.asText(), Content.class);
+	protected static Content fromJson(String json) throws IOException {
+		return API.mapper.readValue(json, Content.class);
+	}
+
+	public String toJson() throws IOException {
+		return API.mapper.writeValueAsString(this);
 	}
 
 	public Content(int user, String sha1) {
