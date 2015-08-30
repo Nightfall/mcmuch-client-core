@@ -1,0 +1,14 @@
+plugins {
+	id 'java'
+	id 'idea'
+	id 'eclipse'
+}
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	compile 'org.apache.httpcomponents:httpclient:4.5'
+	compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+}
