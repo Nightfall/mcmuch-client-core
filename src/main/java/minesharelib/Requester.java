@@ -16,9 +16,9 @@ class Requester {
 	private final HttpHost host;
 	public final String base;
 
-	public Requester(String url) {
-		this.host = new HttpHost(url, 80, "http");
-		this.base = host.getHostName() + "/api/v1";
+	public Requester(String url, int port) {
+		this.host = new HttpHost(url, port, "http");
+		this.base = host.getHostName() + ":" + this.host.getPort() + "/api/v1";
 	}
 
 	public HttpResponse put(String request, String json) throws IOException {

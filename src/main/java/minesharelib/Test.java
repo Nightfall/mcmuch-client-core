@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Test {
 	public static void main(String[] args) {
-		API.INSTANCE = new API("http://0.0.0.0:9292");
+		API.INSTANCE = new API("http://0.0.0.0", 9292);
 		try {
 			System.out.println(User.fromId(1).toJson());
 		} catch (IOException e) {
