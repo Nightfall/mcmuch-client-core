@@ -20,6 +20,12 @@ public class User extends Data {
 		return API.mapper.readValue(json, User.class);
 	}
 
+	public User() {
+		id = -1;
+		hash = "";
+		salt = "";
+	}
+
 	public User(int id, String hash, String salt) {
 		this.id = id;
 		this.hash = hash;

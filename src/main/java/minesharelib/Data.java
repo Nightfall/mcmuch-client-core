@@ -9,6 +9,7 @@ import java.util.List;
 
 public abstract class Data {
 	private static <T, J extends ContainerNode> T get(String type, TypeReference<T> typeRef) throws IOException {
+		System.out.println(API.INSTANCE.requester.base + "/" + type);
 		return API.mapper.readValue(new URL(API.INSTANCE.requester.base + "/" + type), typeRef);
 	}
 
