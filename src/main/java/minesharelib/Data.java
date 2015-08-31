@@ -1,9 +1,6 @@
 package minesharelib;
 
-import minesharelib.util.Requester;
-import org.codehaus.jackson.node.ArrayNode;
 import org.codehaus.jackson.node.ContainerNode;
-import org.codehaus.jackson.node.ObjectNode;
 import org.codehaus.jackson.type.TypeReference;
 
 import java.io.IOException;

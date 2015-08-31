@@ -1,12 +1,10 @@
-package minesharelib.util;
+package minesharelib;
 
-import minesharelib.API;
 import org.apache.http.HttpHost;
 
 import java.io.IOException;
-import java.net.URL;
 
-public class Requester {
+class Requester {
 	private final HttpHost host;
 	public final String base;
 
