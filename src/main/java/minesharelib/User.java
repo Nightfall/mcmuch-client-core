@@ -25,4 +25,9 @@ public class User extends Data {
 		this.hash = hash;
 		this.salt = salt;
 	}
+
+	@Override
+	public void put() throws IOException {
+		putHelper("/users");
+	}
 }

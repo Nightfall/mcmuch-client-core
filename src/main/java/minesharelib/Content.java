@@ -40,4 +40,9 @@ public class Content extends Data {
 		this.name = name;
 		this.type = type;
 	}
+
+	@Override
+	public void put() throws IOException {
+		putHelper("/content");
+	}
 }
