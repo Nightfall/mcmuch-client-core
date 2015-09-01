@@ -5,8 +5,9 @@ import java.util.List;
 
 public class User extends Data {
 	public final int id;
-	public final String hash;
+	public final String uuid_hash;
 	public final String salt;
+	public final String uuid;
 
 	public static List<User> all() throws IOException {
 		return Data.getWith("users", User.class);
@@ -22,14 +23,16 @@ public class User extends Data {
 
 	public User() {
 		id = -1;
-		hash = "";
+		uuid_hash = "";
 		salt = "";
+		uuid = "Default";
 	}
 
-	public User(int id, String hash, String salt) {
+	public User(int id, String hash, String salt, String uuid) {
 		this.id = id;
-		this.hash = hash;
+		this.uuid_hash = hash;
 		this.salt = salt;
+		this.uuid = uuid;
 	}
 
 	@Override

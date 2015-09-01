@@ -8,17 +8,12 @@ import java.net.URL;
 import java.util.List;
 
 public abstract class Data {
-	private static <T> T get(String type, TypeReference<T> typeRef) throws IOException {
-		System.out.println(API.INSTANCE.requester.base + "/" + type);
-		return API.mapper.readValue(new URL(API.INSTANCE.requester.base + "/" + type), typeRef);
+	protected static <T> List<T> getWith(String type, Class<T> clazz) throws IOException {
+		return API.mapper.readValue(new URL(API.INSTANCE.requester.base + "/" + type), new TypeReference<List<T>>() {});
 	}
 
-	protected static <T extends Data> List<T> getWith(String type, Class<T> clazz) throws IOException {
-		return get(type, new TypeReference<List<T>>() {});
-	}
-
-	protected static <T extends Data> T getFrom(String type, Class<T> clazz) throws IOException {
-		return get(type, new TypeReference<T>() {});
+	protected static <T> T getFrom(String type, Class<T> clazz) throws IOException {
+		return API.mapper.readValue(new URL(API.INSTANCE.requester.base + "/" + type), clazz);
 	}
 
 	public String toJson() throws IOException {
